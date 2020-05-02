@@ -28,7 +28,7 @@
 				var localQueryID = window.localStorage.getItem('localQueryID');
 
 				$.getJSON(questorUrl, function(data) {
-					var queryID = data.key;
+					var queryID = data[0].key;
 					//document.write(data[0].key);
 				if (queryID === localQueryID) {
 					// Sorgu sonucunda son query id aynı bulundu, değişiklik talep edilmedi.
@@ -36,7 +36,7 @@
 						data = JSON.parse(data);
 						const copy = []; 
 						data.forEach(function(item){ 
-							copy.push(item.id + '=' + item.number + '<br>'); 
+							copy.push('ID: ' + item.id + '=' + item.number + '<br>'); 
 						}); 
 						document.write(copy); 
 				}
@@ -65,7 +65,7 @@
 		else {
 			// Local Query ID Yok ise...
 				$.getJSON(questorUrl, function(data) {
-					var queryID = data.key;
+					var queryID = data[0].key;
 					//İlk defa ziyaret edildi. Query ID kaydedildi.
 					var localQueryID = window.localStorage.setItem('localQueryID',queryID);
 				})

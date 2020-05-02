@@ -28,13 +28,13 @@ $key = sha1(serialize($results));
 if($_GET) {
 	if ($_GET["getQueryID"] == true) {
 		$QueryResult = [];
-		$QueryResult = ["key" => $key,"status" => true];
+		$QueryResult[0] = ["key" => $key,"status" => true];
 		$QueryResult = json_encode($QueryResult);
 		print $QueryResult ;
 	}
 }
 else {
-	$results += ["key" => $key,"status" => true];
+	$results[0] = ["key" => $key,"status" => true];
 	$json = json_encode($results);
 	print $json ;
 }
